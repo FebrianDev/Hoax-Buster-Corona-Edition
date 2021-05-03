@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,11 +52,18 @@ public class Hoax : MonoBehaviour
 
         if (i == 2)
         {
+            DataPlayer.HoaxConfirm += 1;
+            
             Instantiate(coin,
                 new Vector3(transform.position.x + 2, gameObject.transform.position.y, transform.position.z),
                 quaternion.identity);
             gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
             Destroy(canvas);
+        }
+        else
+        {
+            if(DataPlayer.Credibilitas != 0)
+                DataPlayer.Credibilitas -= 1;
         }
     }
 
