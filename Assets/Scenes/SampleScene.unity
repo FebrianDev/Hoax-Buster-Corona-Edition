@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1642470416}
+      - m_Target: {fileID: 1642470418}
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -2678,6 +2678,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1642470417}
   - component: {fileID: 1642470416}
+  - component: {fileID: 1642470421}
+  - component: {fileID: 1642470420}
+  - component: {fileID: 1642470419}
+  - component: {fileID: 1642470418}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2697,11 +2701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7132b57740ab1a846bf2e60afacd82d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 647937953}
-  credibilitasText: {fileID: 1256048012}
-  coinText: {fileID: 811520604}
-  hoaxConfirmText: {fileID: 1203619315}
-  panelGameOver: {fileID: 1186143804}
 --- !u!4 &1642470417
 Transform:
   m_ObjectHideFlags: 0
@@ -2716,6 +2715,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1642470418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642470415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5293ac541016463ab76d7e9f68651069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1642470419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642470415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01aeb62e6c4b4f7a8cdde6cc7eda8496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1642470420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642470415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be808c3289c4b45a20e06cf7f358953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 647937953}
+  credibilitasText: {fileID: 1256048012}
+  coinText: {fileID: 811520604}
+  hoaxConfirmText: {fileID: 1203619315}
+  panelGameOver: {fileID: 1186143804}
+--- !u!114 &1642470421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642470415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4eb31027b4f41298e06b8cd8a69d032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 300
+  minutes: 0
+  seconds: 0
 --- !u!1 &1661037591
 GameObject:
   m_ObjectHideFlags: 0

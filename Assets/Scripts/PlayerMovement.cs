@@ -2,34 +2,42 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Singleton
+    private static PlayerMovement _player;
+    public static PlayerMovement Instance
+    {
+        get
+        {
+            if (_player == null)
+            {
+                _player = FindObjectOfType<PlayerMovement>();
+            }
+
+            return _player;
+        }
+    }
+    #endregion
+
     //SerializeField Private Components
+    #region Components
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-
     [SerializeField] private Animator anim;
+    #endregion
     
     //SerializedField Private Property
+
+    #region Property
     [Header("Property")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField]private Joystick joystick;
-    
+    #endregion
+
     //Private Property
     private Vector2 movement;
 
-    private void Update()
-    {
-        InputMovement();
-        InputJoystick();
-        //InputAnimation();
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
-    }
-
     //Fungsi untuk melakukan movement pada player
-    private void Movement()
+    public void Movement()
     {
         if (rb != null)
         {
@@ -40,24 +48,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("Komponen Rigidbody Belum DiTambahkan Ke Dalam Script");
         }
     }
-    
-    //Fungsi untuk Input Player
-    private void InputMovement()
-    {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-    }
-    
-    private void InputJoystick()
+
+    public void InputJoystick()
     {
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
     }
-
-    /*private void InputAnimation()
-    {
-        anim.SetFloat("Horizontal", movement.x);
-        anim.SetFloat("Vertical", movement.y);
-        anim.SetFloat("Speed", movement.sqrMagnitude);
-    }*/
 }
