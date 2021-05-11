@@ -1,12 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Toggle))]
 public class Hoax : MonoBehaviour
 {
     public State state;
     [SerializeField] private GameObject canvas;
-    [SerializeField] private ToggleGroup[] key;
     [SerializeField] private Text[] statement;
 
     [SerializeField] private GameObject btnInteract;
@@ -18,8 +20,7 @@ public class Hoax : MonoBehaviour
 
     [SerializeField] private int indexBooks = 0;
 
-    [SerializeField] private GameObject[] gameObjectToogle;
-    private Toggle[] toggle;
+    [SerializeField] private List<CheckData> list = new List<CheckData>();
 
     private void Awake()
     {
@@ -32,31 +33,50 @@ public class Hoax : MonoBehaviour
         }
 
         btnSubmit.SetActive(false);
-    }
 
-    private void Start()
-    {
-        foreach (var g in gameObjectToogle)
+        for (var i = 0; i < list.Count; i++)
         {
-            toggle = g.GetComponentsInChildren<Toggle>();
+            list[i].key[0].allowSwitchOff = true;
+
+            for (var j = 0; j < list[i].check.Length; j++)
+            {
+                list[i].check[j].isOn = false;
+            }
         }
     }
 
     private void Update()
     {
-        foreach (var kGroup in key)
+        for (var i = 0; i < list.Count; i++)
         {
-            foreach (var t1 in toggle)
+            for (var j = 0; j < list[i].check.Length; j++)
             {
-                t1.onValueChanged.AddListener((t) =>
+                if (list[i].check[j].isOn)
                 {
-                    if (!t) return;
-                    kGroup.allowSwitchOff = false;
-                    btnSubmit.SetActive(btnSubmit != null);
-                });
+                    list[i].key[0].allowSwitchOff = false;
+                }
             }
         }
 
+        var index = 0;
+        for (var i = 0; i < list.Count; i++)
+        {
+            if (list[i].check[0].isOn || list[i].check[1].isOn)
+            {
+                index++;
+            }
+        }
+
+        if (index == list.Count)
+        {
+            if (btnSubmit != null)
+            {
+                btnSubmit.SetActive(true);
+            }
+        }
+        
+        print(index);
+        
         ReadBooks();
     }
 
@@ -78,9 +98,13 @@ public class Hoax : MonoBehaviour
 
     public void Submit()
     {
-        var i = key.Select(t => t.ActiveToggles().FirstOrDefault())
-            .Where((toggle, j) => !(toggle is null) && toggle.name == GetKey(j))
-            .Count();
+        var i = 0;
+        for (var k = 0; k < list.Count; k++)
+        {
+            i = list[k].key.Select(t => t.ActiveToggles().FirstOrDefault())
+                .Where((toggle, j) => !(toggle is null) && toggle.name == GetKey(j))
+                .Count();
+        }
 
         if (i == 2)
         {
@@ -101,11 +125,14 @@ public class Hoax : MonoBehaviour
 
     public void Close()
     {
-        foreach (var kGroup in key)
+        var i = 0;
+        foreach (var kGroup in list)
         {
-            kGroup.allowSwitchOff = true;
-            kGroup.ActiveToggles().FirstOrDefault().isOn = false;
+            kGroup.key[0].allowSwitchOff = true;
+            kGroup.check[i].isOn = false;
+            i++;
         }
+
         btnSubmit.SetActive(false);
         canvas.SetActive(false);
     }
@@ -130,4 +157,11 @@ public class Hoax : MonoBehaviour
 
     public void NextBook() => indexBooks++;
     public void PrevBook() => indexBooks--;
+}
+
+[System.Serializable]
+public struct CheckData
+{
+    public ToggleGroup[] key;
+    public Toggle[] check;
 }

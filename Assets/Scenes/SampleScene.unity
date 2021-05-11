@@ -206,7 +206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1683625079}
-        m_MethodName: True
+        m_MethodName: Check
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2862,7 +2862,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1683625079}
-        m_MethodName: True
+        m_MethodName: Check
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3439,9 +3439,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 11400000, guid: 30c401664878d204282b4939b88cbe50, type: 2}
   canvas: {fileID: 1840993028}
-  key:
-  - {fileID: 823067981}
-  - {fileID: 525360618}
   statement:
   - {fileID: 823067979}
   - {fileID: 525360619}
@@ -3454,9 +3451,15 @@ MonoBehaviour:
   next: {fileID: 880705391}
   prev: {fileID: 397646892}
   indexBooks: 0
-  gameObjectToogle:
-  - {fileID: 823067977}
-  - {fileID: 525360616}
+  list:
+  - key:
+    - {fileID: 823067981}
+    - {fileID: 525360618}
+    check:
+    - {fileID: 1579978161}
+    - {fileID: 204845813}
+    - {fileID: 1953941957}
+    - {fileID: 2143978475}
 --- !u!1 &1695241679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,8 +3967,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1683625079}
-        m_MethodName: False
+        m_MethodName: Check2
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1683625079}
+        m_MethodName: Check
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4305,7 +4319,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1683625079}
-        m_MethodName: False
+        m_MethodName: Check2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
