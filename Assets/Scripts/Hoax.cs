@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,6 @@ public class Hoax : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private ToggleGroup[] key;
     [SerializeField] private Text[] statement;
-    [SerializeField] private GameObject coin;
 
     [SerializeField] private GameObject btnInteract;
     [SerializeField] private GameObject btnSubmit;
@@ -19,6 +17,9 @@ public class Hoax : MonoBehaviour
     [SerializeField] private GameObject prev;
 
     [SerializeField] private int indexBooks = 0;
+
+    [SerializeField] private GameObject[] gameObjectToogle;
+    private Toggle[] toggle;
 
     private void Awake()
     {
@@ -33,16 +34,28 @@ public class Hoax : MonoBehaviour
         btnSubmit.SetActive(false);
     }
 
+    private void Start()
+    {
+        foreach (var g in gameObjectToogle)
+        {
+            toggle = g.GetComponentsInChildren<Toggle>();
+        }
+    }
+
     private void Update()
     {
-        // ReSharper disable once PossibleNullReferenceException
-        // var i = key.Count(t => !t.ActiveToggles().FirstOrDefault().isOn && !(t.ActiveToggles().FirstOrDefault() is null));
-        //
-        // if (i == key.Length)
-        // {
-        if (btnSubmit != null)
-            btnSubmit.SetActive(true);
-        // }
+        foreach (var kGroup in key)
+        {
+            foreach (var t1 in toggle)
+            {
+                t1.onValueChanged.AddListener((t) =>
+                {
+                    if (!t) return;
+                    kGroup.allowSwitchOff = false;
+                    btnSubmit.SetActive(btnSubmit != null);
+                });
+            }
+        }
 
         ReadBooks();
     }
@@ -65,21 +78,14 @@ public class Hoax : MonoBehaviour
 
     public void Submit()
     {
-        var i = 0;
-        for (var j = 0; j < key.Length; j++)
-        {
-            var toggle = key[j].ActiveToggles().FirstOrDefault();
-            if (!(toggle is null) && toggle.name == GetKey(j))
-                i += 1;
-        }
+        var i = key.Select(t => t.ActiveToggles().FirstOrDefault())
+            .Where((toggle, j) => !(toggle is null) && toggle.name == GetKey(j))
+            .Count();
 
         if (i == 2)
         {
             DataPlayer.HoaxConfirm += 1;
-
-            Instantiate(coin,
-                new Vector3(transform.position.x + 2, gameObject.transform.position.y, transform.position.z),
-                quaternion.identity);
+            DataPlayer.Coin += 10;
             gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
             Destroy(canvas);
         }
@@ -93,7 +99,16 @@ public class Hoax : MonoBehaviour
         }
     }
 
-    public void Close() => canvas.SetActive(false);
+    public void Close()
+    {
+        foreach (var kGroup in key)
+        {
+            kGroup.allowSwitchOff = true;
+            kGroup.ActiveToggles().FirstOrDefault().isOn = false;
+        }
+        btnSubmit.SetActive(false);
+        canvas.SetActive(false);
+    }
 
     public void Show() => canvas.SetActive(true);
 
@@ -108,7 +123,7 @@ public class Hoax : MonoBehaviour
 
         for (var i = 0; i < books.Length; i++)
         {
-            if(books[i] != null)
+            if (books[i] != null)
                 books[i].SetActive(i == indexBooks);
         }
     }
