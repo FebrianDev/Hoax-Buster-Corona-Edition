@@ -3454,10 +3454,12 @@ MonoBehaviour:
   list:
   - key:
     - {fileID: 823067981}
-    - {fileID: 525360618}
     check:
     - {fileID: 1579978161}
     - {fileID: 204845813}
+  - key:
+    - {fileID: 525360618}
+    check:
     - {fileID: 1953941957}
     - {fileID: 2143978475}
 --- !u!1 &1695241679

@@ -22,6 +22,8 @@ public class Hoax : MonoBehaviour
 
     [SerializeField] private List<CheckData> list = new List<CheckData>();
 
+    private bool isDone;
+
     private void Awake()
     {
         if (canvas != null)
@@ -43,6 +45,11 @@ public class Hoax : MonoBehaviour
                 list[i].check[j].isOn = false;
             }
         }
+    }
+
+    private void Start()
+    {
+        isDone = false;
     }
 
     private void Update()
@@ -67,16 +74,15 @@ public class Hoax : MonoBehaviour
             }
         }
 
-        if (index == list.Count)
+        if (index == list.Count && !isDone)
         {
             if (btnSubmit != null)
             {
                 btnSubmit.SetActive(true);
+                isDone = true;
             }
         }
-        
-        print(index);
-        
+
         ReadBooks();
     }
 
@@ -101,10 +107,13 @@ public class Hoax : MonoBehaviour
         var i = 0;
         for (var k = 0; k < list.Count; k++)
         {
-            i = list[k].key.Select(t => t.ActiveToggles().FirstOrDefault())
-                .Where((toggle, j) => !(toggle is null) && toggle.name == GetKey(j))
-                .Count();
+            var toggles = list[k].key[0].ActiveToggles().FirstOrDefault();
+            if (!(toggles is null) && toggles.name == GetKey(k))
+            {
+                i++;
+            }
         }
+
 
         if (i == 2)
         {
@@ -133,6 +142,7 @@ public class Hoax : MonoBehaviour
             i++;
         }
 
+        isDone = false;
         btnSubmit.SetActive(false);
         canvas.SetActive(false);
     }
