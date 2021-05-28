@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -27,9 +29,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text credibilitasText;
     [SerializeField] private Text coinText;
     [SerializeField] private Text hoaxConfirmText;
-    
+
+    [Header("Panel")] 
     [SerializeField] private GameObject panelGameOver;
-    
+    [SerializeField] private GameObject  panelPause;
+
+    private void Start()
+    {
+        panelPause.SetActive(false);
+        panelGameOver.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (GameOver.Instance.IsGameOver)
+        {
+            timerText.text = $"{0} : {00}";
+        }
+    }
+
     public void UIPlayer()
     {
         credibilitasText.text = $"Credibilitas : {DataPlayer.Credibilitas.ToString()}";
@@ -39,5 +57,36 @@ public class UIManager : MonoBehaviour
     }
 
     public void PanelGameOver() => panelGameOver.SetActive(GameOver.Instance.IsGameOver);
+
+    public void Pause()
+    {
+        GameManager.Instance.isPause = true;
+        Time.timeScale = 0f;
+        panelPause.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        GameManager.Instance.isPause = false;
+        Time.timeScale = 1f; 
+        panelPause.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        GameManager.Instance.isPause = false;
+        Time.timeScale = 1f; 
+        panelGameOver.SetActive(false);
+        panelPause.SetActive(false);
+        SceneManager.LoadScene("ChooseLevel");
+    }
     
+    public void Restart()
+    {
+        GameManager.Instance.isPause = false;
+        Time.timeScale = 1f; 
+        panelGameOver.SetActive(false);
+        panelPause.SetActive(false);
+        SceneManager.LoadScene("Level 1-1");
+    }
 }

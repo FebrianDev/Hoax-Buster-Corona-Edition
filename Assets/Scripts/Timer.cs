@@ -20,7 +20,8 @@ public class Timer : MonoBehaviour
     [HideInInspector] public float seconds;
     public void SetTimer()
     {
-        time -= Time.unscaledDeltaTime;
+        if(!GameManager.Instance.isPause && !GameOver.Instance.IsGameOver)
+            time -= Time.unscaledDeltaTime;
       
         minutes = Mathf.FloorToInt(time / 60);
         seconds = Mathf.FloorToInt(time % 60);

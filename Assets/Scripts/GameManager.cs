@@ -18,13 +18,17 @@ public class GameManager : MonoBehaviour
       }
    }
 
+   [HideInInspector] public bool isPause;
+   
    private void Start()
    {
+      isPause = false;
+      
       DataPlayer.Coin = 0;
       DataPlayer.Credibilitas = 8;
       DataPlayer.HoaxConfirm = 0;
       
-      Timer.Instance.time = 300;
+      // Timer.Instance.time = 300;
 
       Time.timeScale = 1f;
    }

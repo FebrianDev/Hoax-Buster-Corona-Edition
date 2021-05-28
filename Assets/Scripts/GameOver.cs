@@ -18,9 +18,8 @@ public class GameOver : MonoBehaviour
         }
     }
     #endregion
-    
-    
-    
+
+
     //if timer <= 0 or Credibilitas == 0 then return true else return false 
     public bool IsGameOver => (Timer.Instance.time <= 0 || DataPlayer.Credibilitas == 0) ? true : false;
 }

@@ -22,6 +22,8 @@ public class Hoax : MonoBehaviour
 
     [SerializeField] private List<CheckData> list = new List<CheckData>();
 
+    [SerializeField] private GameObject tandaSeru;
+
     private bool isDone;
 
     private void Awake()
@@ -120,6 +122,7 @@ public class Hoax : MonoBehaviour
             DataPlayer.HoaxConfirm += 1;
             DataPlayer.Coin += 10;
             gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
+            Destroy(tandaSeru);
             Destroy(canvas);
         }
         else
