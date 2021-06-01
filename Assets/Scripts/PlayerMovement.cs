@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,15 +37,19 @@ public class PlayerMovement : MonoBehaviour
     //Private Property
     private Vector2 movement;
 
+    private void Update()
+    {
+       InputAnimation();
+        
+        print(movement.sqrMagnitude);
+    }
+
     //Fungsi untuk melakukan movement pada player
     public void Movement()
     {
         if (rb != null)
         {
             rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
-            MainCharAnimator.SetFloat("Horizontal", movement.x);
-            MainCharAnimator.SetFloat("Vertical", movement.y);
-            MainCharAnimator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else
         {
@@ -56,5 +61,12 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
+    }
+
+    public void InputAnimation()
+    {
+        MainCharAnimator.SetFloat("Horizontal", movement.x);
+        MainCharAnimator.SetFloat("Vertical", movement.y);
+        MainCharAnimator.SetFloat("Speed", movement.sqrMagnitude);
     }
 }

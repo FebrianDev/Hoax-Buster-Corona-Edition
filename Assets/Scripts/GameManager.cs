@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
    }
 
    [HideInInspector] public bool isPause;
-   
+
+   [SerializeField] private int targetHoax;
+
    private void Start()
    {
       isPause = false;
@@ -27,8 +29,6 @@ public class GameManager : MonoBehaviour
       DataPlayer.Coin = 0;
       DataPlayer.Credibilitas = 8;
       DataPlayer.HoaxConfirm = 0;
-      
-      // Timer.Instance.time = 300;
 
       Time.timeScale = 1f;
    }
@@ -38,12 +38,18 @@ public class GameManager : MonoBehaviour
       PlayerMovement.Instance.InputJoystick();
       Timer.Instance.SetTimer();
       UIManager.Instance.UIPlayer();
-      UIManager.Instance.PanelGameOver();
+
+      if (Input.GetKey(KeyCode.C))
+      {
+         PlayerPrefs.DeleteAll();
+      }
    }
 
    private void FixedUpdate()
    {
       PlayerMovement.Instance.Movement();
    }
-   
+
+   public bool GameWin => DataPlayer.HoaxConfirm == targetHoax && DataPlayer.Credibilitas != 0;
+
 };

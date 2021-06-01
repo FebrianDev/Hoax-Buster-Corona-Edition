@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -17,6 +18,12 @@ public class ChooseLevel : MonoBehaviour
 
     private Vector3 mainPosition, NextOnePosition, NextTwoPosition, prevOnePosition, prevTwoPosition;
 
+    private string levelTwoOpen;
+    private void Awake()
+    {
+        levelTwoOpen = PlayerPrefs.GetString("Level2", "");
+    }
+
     private void Start()
     {
         mainPosition = levels[0].transform.localPosition;
@@ -25,6 +32,16 @@ public class ChooseLevel : MonoBehaviour
         prevOnePosition = new Vector3(-1020, levels[0].transform.localPosition.y, levels[0].transform.localPosition.z);
         prevTwoPosition = new Vector3(-1830, levels[0].transform.localPosition.y, levels[0].transform.localPosition.z);
         currentIndex = 0;
+
+        Time.timeScale = 1f;
+
+        if (levelTwoOpen == "Level2")
+        {
+            levels[0].transform.localPosition = Vector3.Lerp(levels[0].transform.localPosition,prevOnePosition, 4f * Time.deltaTime);
+            levels[1].transform.localPosition = Vector3.Lerp(levels[1].transform.localPosition,mainPosition, 4f * Time.deltaTime);;
+            levels[2].transform.localPosition = Vector3.Lerp(levels[2].transform.localPosition,NextOnePosition, 4f * Time.deltaTime);
+            currentIndex++;
+        }
     }
 
     // Update is called once per frame
@@ -91,5 +108,13 @@ public class ChooseLevel : MonoBehaviour
     public void PlayLevelOne()
     {
         SceneManager.LoadScene("Level 1-1");
+    }
+
+    public void PlayLevelTwo()
+    {
+        if (levelTwoOpen == "Level2")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
     }
 }

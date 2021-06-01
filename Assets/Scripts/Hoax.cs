@@ -106,6 +106,7 @@ public class Hoax : MonoBehaviour
 
     public void Submit()
     {
+        btnInteract.SetActive(false);
         var i = 0;
         for (var k = 0; k < list.Count; k++)
         {
@@ -124,6 +125,7 @@ public class Hoax : MonoBehaviour
             gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             Destroy(tandaSeru);
             Destroy(canvas);
+            gameObject.GetComponent<Hoax>().enabled = false;
         }
         else
         {
@@ -131,6 +133,7 @@ public class Hoax : MonoBehaviour
                 DataPlayer.Credibilitas -= 1;
 
             gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
+            gameObject.GetComponent<Hoax>().enabled = false;
             Destroy(canvas);
         }
     }

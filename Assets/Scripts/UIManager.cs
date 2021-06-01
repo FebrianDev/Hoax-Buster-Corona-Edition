@@ -32,12 +32,19 @@ public class UIManager : MonoBehaviour
 
     [Header("Panel")] 
     [SerializeField] private GameObject panelGameOver;
+    [SerializeField] private GameObject  panelWin;
     [SerializeField] private GameObject  panelPause;
+
+    [Header("Button")] 
+    [SerializeField] private GameObject pause;
 
     private void Start()
     {
+        pause.SetActive(true);
+        
         panelPause.SetActive(false);
         panelGameOver.SetActive(false);
+        panelWin.SetActive(false);
     }
 
     private void Update()
@@ -45,7 +52,17 @@ public class UIManager : MonoBehaviour
         if (GameOver.Instance.IsGameOver)
         {
             timerText.text = $"{0} : {00}";
+            pause.SetActive(false);
+            Time.timeScale = 0f;
+            panelGameOver.SetActive(true);
         }
+
+        if (GameManager.Instance.GameWin)
+        {
+            panelWin.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        
     }
 
     public void UIPlayer()
@@ -55,8 +72,6 @@ public class UIManager : MonoBehaviour
         hoaxConfirmText.text = DataPlayer.HoaxConfirm.ToString();
         timerText.text = $"{Timer.Instance.minutes} : {Timer.Instance.seconds}";
     }
-
-    public void PanelGameOver() => panelGameOver.SetActive(GameOver.Instance.IsGameOver);
 
     public void Pause()
     {
@@ -88,5 +103,15 @@ public class UIManager : MonoBehaviour
         panelGameOver.SetActive(false);
         panelPause.SetActive(false);
         SceneManager.LoadScene("Level 1-1");
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetString("Level2", "Level2");
+        GameManager.Instance.isPause = false;
+        Time.timeScale = 1f; 
+        panelGameOver.SetActive(false);
+        panelPause.SetActive(false);
+        SceneManager.LoadScene("ChooseLevel");
     }
 }
