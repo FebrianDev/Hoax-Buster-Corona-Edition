@@ -50,8 +50,8 @@ public class UIManager : MonoBehaviour
 
     public void UIPlayer()
     {
-        credibilitasText.text = $"Credibilitas : {DataPlayer.Credibilitas.ToString()}";
-        coinText.text = $"Coin : {DataPlayer.Coin.ToString()}";
+        credibilitasText.text = $"{DataPlayer.Credibilitas.ToString()}";
+        coinText.text = $"{DataPlayer.Coin.ToString()}";
         hoaxConfirmText.text = DataPlayer.HoaxConfirm.ToString();
         timerText.text = $"{Timer.Instance.minutes} : {Timer.Instance.seconds}";
     }

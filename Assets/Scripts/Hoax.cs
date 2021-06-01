@@ -121,7 +121,7 @@ public class Hoax : MonoBehaviour
         {
             DataPlayer.HoaxConfirm += 1;
             DataPlayer.Coin += 10;
-            gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
+            gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             Destroy(tandaSeru);
             Destroy(canvas);
         }
@@ -130,7 +130,7 @@ public class Hoax : MonoBehaviour
             if (DataPlayer.Credibilitas != 0)
                 DataPlayer.Credibilitas -= 1;
 
-            gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
+            gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             Destroy(canvas);
         }
     }

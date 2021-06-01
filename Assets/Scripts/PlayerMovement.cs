@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator anim;
     #endregion
-    
+    [SerializeField] private Animator MainCharAnimator;
     //SerializedField Private Property
 
     #region Property
@@ -42,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
         if (rb != null)
         {
             rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
+            MainCharAnimator.SetFloat("Horizontal", movement.x);
+            MainCharAnimator.SetFloat("Vertical", movement.y);
+            MainCharAnimator.SetFloat("Speed", movement.sqrMagnitude);
         }
         else
         {

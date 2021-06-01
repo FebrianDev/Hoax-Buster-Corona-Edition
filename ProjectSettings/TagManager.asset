@@ -48,9 +48,15 @@ TagManager:
   - name: background 1
     uniqueID: 3371349589
     locked: 0
+  - name: background 2
+    uniqueID: 2107724767
+    locked: 0
   - name: Player
     uniqueID: 3900078349
     locked: 0
-  - name: background 2
-    uniqueID: 2107724767
+  - name: background3
+    uniqueID: 1615007271
+    locked: 0
+  - name: background4
+    uniqueID: 1461945873
     locked: 0
