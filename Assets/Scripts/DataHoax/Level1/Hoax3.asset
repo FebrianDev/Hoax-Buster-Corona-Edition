@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b30a5ef63bf64a848a808fbdb1c51a58, type: 3}
-  m_Name: Hoax1
+  m_Name: Hoax3
   m_EditorClassIdentifier: 
   states:
-  - statement: Covid-19 adalah nama virus
-    key: 1
-  - statement: Corona berarti mahkota dalam bahasa latin
+  - statement: Sesak nafas adalah salah satu gejala Covid-19
     key: 0
+  - statement: Kulit gatal-gatal adalah gejala Covid-19
+    key: 1
