@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b18e0baa80375147a9dedf47dc77ccb
+guid: d1d4c55ce54c3da4c9afe68c35755968
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7449421279380016608
-    second: exitbutton_0
+      213: -8265532865026038443
+    second: road outside map_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: exitbutton_0
+      name: road outside map_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 74
-        width: 252
-        height: 96
+        x: 0
+        y: 0
+        width: 640
+        height: 360
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 022715ca0d65e9890800000000000000
-      internalID: -7449421279380016608
+      spriteID: 5556ec4e6adea4d80800000000000000
+      internalID: -8265532865026038443
       vertices: []
       indices: 
       edges: []

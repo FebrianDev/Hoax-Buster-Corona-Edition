@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b18e0baa80375147a9dedf47dc77ccb
+guid: 0bea317b6fda32b4c8bc702047bd77be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7449421279380016608
-    second: exitbutton_0
+      213: -7621703713914294255
+    second: kreditbutton_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,22 +118,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: exitbutton_0
+      name: kreditbutton_0
       rect:
         serializedVersion: 2
         x: 22
-        y: 74
+        y: 73
         width: 252
-        height: 96
+        height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 022715ca0d65e9890800000000000000
-      internalID: -7449421279380016608
+      spriteID: 110fcdc8ad44a3690800000000000000
+      internalID: -7621703713914294255
       vertices: []
       indices: 
       edges: []
