@@ -1348,7 +1348,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Deteksi 6 Hoax di Komplek Mawar!
+  m_Text: Deteksi 5 Hoax di Komplek Mawar!
 --- !u!222 &1384322865
 CanvasRenderer:
   m_ObjectHideFlags: 0
