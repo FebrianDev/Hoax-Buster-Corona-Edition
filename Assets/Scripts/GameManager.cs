@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
    [HideInInspector] public bool isPause;
 
    [SerializeField] private int targetHoax;
+   [SerializeField] private int credibilitas;
 
    private void Start()
    {
       isPause = false;
       
       DataPlayer.Coin = 0;
-      DataPlayer.Credibilitas = 8;
+      DataPlayer.Credibilitas = credibilitas;
       DataPlayer.HoaxConfirm = 0;
 
       Time.timeScale = 1f;
