@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Button")] 
     [SerializeField] private GameObject pause;
+    [SerializeField] private GameObject Kredit;
+
 
     private void Start()
     {
@@ -113,5 +115,13 @@ public class UIManager : MonoBehaviour
         panelGameOver.SetActive(false);
         panelPause.SetActive(false);
         SceneManager.LoadScene("ChooseLevel");
+    }
+    public void ShowCredit()
+    {
+        Kredit.SetActive(true);
+    }
+    public void CloseCredit()
+    {
+        Kredit.SetActive(false);
     }
 }
