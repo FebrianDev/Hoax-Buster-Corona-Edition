@@ -1185,7 +1185,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 268571247418112568, guid: 566e93d0bb7f16f45ad8e5f88c6cab95, type: 3}
+  m_Sprite: {fileID: -7115580423848346141, guid: c70a202b427bd834bbde354731baa651,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2039,7 +2040,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: this  a  tutorial  level
+  m_Text: coming soon
 --- !u!222 &2051781764
 CanvasRenderer:
   m_ObjectHideFlags: 0
