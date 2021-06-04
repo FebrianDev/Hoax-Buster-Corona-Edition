@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Scene = UnityEditor.SearchService.Scene;
@@ -107,6 +108,7 @@ public class ChooseLevel : MonoBehaviour
 
     public void PlayLevelOne()
     {
+        Destroy(GameObject.FindWithTag("Music"));
         SceneManager.LoadScene("Level 1-1");
     }
 
@@ -114,6 +116,7 @@ public class ChooseLevel : MonoBehaviour
     {
         if (levelTwoOpen == "Level2")
         {
+            Destroy(GameObject.FindWithTag("Music"));
             SceneManager.LoadScene("Level 2");
         }
     }
