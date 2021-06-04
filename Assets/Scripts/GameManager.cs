@@ -23,6 +23,13 @@ public class GameManager : MonoBehaviour
    [SerializeField] private int targetHoax;
    [SerializeField] private int credibilitas;
 
+   private int coinNow;
+
+   private void Awake()
+   {
+      coinNow = PlayerPrefs.GetInt("COIN", 0);
+   }
+
    private void Start()
    {
       isPause = false;
@@ -43,6 +50,11 @@ public class GameManager : MonoBehaviour
       if (Input.GetKey(KeyCode.C))
       {
          PlayerPrefs.DeleteAll();
+      }
+
+      if (GameWin)
+      {
+         PlayerPrefs.SetInt("COIN", coinNow + DataPlayer.Coin);
       }
    }
 
