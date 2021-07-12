@@ -118,7 +118,7 @@ public class Hoax : MonoBehaviour
         }
 
 
-        if (i == 2)
+        if (i == list.Count)
         {
             DataPlayer.HoaxConfirm += 1;
             DataPlayer.Coin += 10;
@@ -131,7 +131,7 @@ public class Hoax : MonoBehaviour
         {
             if (DataPlayer.Credibilitas != 0)
                 DataPlayer.Credibilitas -= 1;
-
+            Destroy(tandaSeru);
             gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
             gameObject.GetComponent<Hoax>().enabled = false;
             Destroy(canvas);
