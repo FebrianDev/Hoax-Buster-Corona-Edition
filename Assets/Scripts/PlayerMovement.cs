@@ -59,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void InputJoystick()
     {
-        movement.x = joystick.Horizontal;
-        movement.y = joystick.Vertical;
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
     }
 
     public void InputAnimation()

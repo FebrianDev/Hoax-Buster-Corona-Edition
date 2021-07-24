@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pause;
     [SerializeField] private GameObject Kredit;
 
+    [Header("Panel Win")] 
+    [SerializeField] private Text checkedInformationFinishText;
+    [SerializeField] private Text coinsFinishText;
+    [SerializeField] private Text credibilitasFinishText;
 
     private void Start()
     {
@@ -63,6 +67,10 @@ public class UIManager : MonoBehaviour
         {
             panelWin.SetActive(true);
             Time.timeScale = 0f;
+
+            checkedInformationFinishText.text = DataPlayer.HoaxConfirm.ToString();
+            credibilitasText.text = DataPlayer.Credibilitas.ToString();
+            coinsFinishText.text = DataPlayer.Coin.ToString();
         }
         
     }

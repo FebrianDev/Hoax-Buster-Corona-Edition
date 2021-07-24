@@ -52,6 +52,7 @@ public class Hoax : MonoBehaviour
     private void Start()
     {
         isDone = false;
+        btnInteract.SetActive(false);
     }
 
     private void Update()
@@ -83,6 +84,11 @@ public class Hoax : MonoBehaviour
                 btnSubmit.SetActive(true);
                 isDone = true;
             }
+        }
+
+        if (btnInteract.activeSelf && Input.GetKey(KeyCode.E))
+        {
+            Show();
         }
 
         ReadBooks();
