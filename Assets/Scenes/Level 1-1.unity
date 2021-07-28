@@ -27151,9 +27151,9 @@ MonoBehaviour:
   panelPause: {fileID: 1311532313}
   pause: {fileID: 7341358}
   Kredit: {fileID: 0}
-  checkedInformationFinishText: {fileID: 0}
-  coinsFinishText: {fileID: 0}
-  credibilitasFinishText: {fileID: 0}
+  checkedInformationFinishText: {fileID: 275997801}
+  coinsFinishText: {fileID: 1090046975}
+  credibilitasFinishText: {fileID: 1192025345}
 --- !u!114 &1642470421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35186,7 +35186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91a762c8d353d4647bdb5a391fb4a53b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f4ac34e0f460554685c7d4d0f7247cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

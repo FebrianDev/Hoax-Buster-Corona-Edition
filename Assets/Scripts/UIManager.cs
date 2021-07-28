@@ -69,10 +69,11 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
 
             checkedInformationFinishText.text = DataPlayer.HoaxConfirm.ToString();
-            credibilitasText.text = DataPlayer.Credibilitas.ToString();
+            credibilitasFinishText.text = DataPlayer.Credibilitas.ToString();
             coinsFinishText.text = DataPlayer.Coin.ToString();
         }
         
+        Debug.Log("Coin "+DataPlayer.Credibilitas);
     }
 
     public void UIPlayer()
