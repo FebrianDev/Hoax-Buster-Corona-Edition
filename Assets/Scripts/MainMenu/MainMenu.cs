@@ -42,5 +42,10 @@ namespace MainMenu
          DontDestroyOnLoad(musicObject);  
          SceneManager.LoadScene("Customization");
       }
+
+      public void Exit()
+      {
+         Application.Quit();
+      }
    }
 }
